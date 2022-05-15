@@ -1,8 +1,18 @@
 <nav>
-  <app-lista-turmas></app-lista-turmas>
+  <app-lista-turmas
+    (turmaSelecionada)="exibeTurma($event)"
+  >
+  </app-lista-turmas>
 </nav>
-<main>
-  Selecione uma turma para exibir.
+<main *ngIf="turmaParaExibir">
+  <h1>
+    {{ turmaParaExibir.disciplina.nome }}
+  </h1>
+  {{ turmaParaExibir.disciplina.codigo }}
+  {{ turmaParaExibir.ano }}-{{ turmaParaExibir.periodo }}
+  <div *ngFor="let aluno of turmaParaExibir.alunos">
+    {{ aluno.nome }}
+  </div>
 </main>
 
 <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -13,6 +13,9 @@ import { TurmaService } from 'src/app/services/turma.service';
 })
 export class ListaTurmasComponent implements OnInit {
 
+  @Output()
+  public turmaSelecionada: EventEmitter<Turma> = new EventEmitter();
+
   public turmas$: Observable<Turma[]> = this.turmaService.get().pipe(
     tap(turmas => {
       console.log('Chegaram as turmas!', turmas);
@@ -25,6 +28,11 @@ export class ListaTurmasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public selecionaTurma(turma: Turma): void {
+    console.log('Clicou na turma', turma);
+    this.turmaSelecionada.emit(turma);
   }
 
 }

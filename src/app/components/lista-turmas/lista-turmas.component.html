@@ -1,5 +1,6 @@
 <button
   *ngFor="let turma of (turmas$ | async)"
+  (click)="selecionaTurma(turma)"
   type="button"
 >
   {{ turma.disciplina.codigo }}
