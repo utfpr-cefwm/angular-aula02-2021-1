@@ -11,4 +11,8 @@ export class Turma {
   ) {
   }
 
+  public get nome(): string {
+    return this.disciplina.codigo + ' ' + this.ano + '-' + this.periodo;
+  }
+
 }

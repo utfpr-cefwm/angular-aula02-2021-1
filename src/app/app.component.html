@@ -5,14 +5,10 @@
   </app-lista-turmas>
 </nav>
 <main *ngIf="turmaParaExibir">
-  <h1>
-    {{ turmaParaExibir.disciplina.nome }}
-  </h1>
-  {{ turmaParaExibir.disciplina.codigo }}
-  {{ turmaParaExibir.ano }}-{{ turmaParaExibir.periodo }}
-  <div *ngFor="let aluno of turmaParaExibir.alunos">
-    {{ aluno.nome }}
-  </div>
+  <app-turma-detalhes
+    [turma]="turmaParaExibir"
+  >
+  </app-turma-detalhes>
 </main>
 
 <router-outlet></router-outlet>
